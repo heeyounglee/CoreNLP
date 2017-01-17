@@ -27,7 +27,7 @@ public abstract class Sieve implements Serializable {
   
   private static final long serialVersionUID = 3986463332365306868L;
   
-  public enum ClassifierType {RULE, RF, ORACLE};
+  public enum ClassifierType {RULE, RF, ORACLE, LINEAR};
   
   public ClassifierType classifierType = null;
   
@@ -119,6 +119,12 @@ public abstract class Sieve implements Serializable {
         OracleSieve oracleSieve = new OracleSieve(props, sievename);
         oracleSieve.props = props;
         return oracleSieve;
+
+      case LINEAR:
+          LinearSieve linearSieve = IOUtils.readObjectFromFile(CorefProperties.getPathModel(props, sievename));
+          linearSieve.thresMerge = CorefProperties.getMergeThreshold(props, sievename);
+          System.err.println("Done.\nMerging threshold: "+linearSieve.thresMerge);
+          return linearSieve;
         
       default:
         throw new RuntimeException("no sieve type specified");

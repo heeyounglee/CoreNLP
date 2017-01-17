@@ -687,6 +687,7 @@ public class Preprocessor {
 
         if (w != null) {
           if(findSubject(doc, dependency, w, sentNum, utterNum)) return true;
+          if(dependency.getPathToRoot(w)==null) return false;
           for(IndexedWord p : dependency.getPathToRoot(w)) {
             if(!p.tag().startsWith("V") && !p.tag().startsWith("MD")) break;
             if(findSubject(doc, dependency, p, sentNum, utterNum)) return true;    // handling something like "was talking", "can tell" 

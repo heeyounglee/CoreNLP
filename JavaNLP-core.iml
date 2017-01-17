@@ -22,6 +22,8 @@
     <libelement value="jar://$MODULE_DIR$/lib/protobuf.jar!/" />
     <libelement value="jar://$MODULE_DIR$/lib/javacc.jar!/" />
     <libelement value="jar://$MODULE_DIR$/lib/javax.json.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/fastrf-0.99.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/weka.jar!/" />
     <src_description expected_position="0">
       <src_folder value="file://$MODULE_DIR$/itest/src" expected_position="0" />
       <src_folder value="file://$MODULE_DIR$/src" expected_position="1" />

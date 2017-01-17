@@ -202,6 +202,7 @@ public class CorefProperties {
   public static ClassifierType getClassifierType(Properties props, String sievename) {
     if(dcorefSieveNames.contains(sievename)) return ClassifierType.RULE;
     if(sievename.toLowerCase().endsWith("-rf")) return ClassifierType.RF;
+    if(sievename.toLowerCase().endsWith("-linear")) return ClassifierType.LINEAR;
     if(sievename.toLowerCase().endsWith("-oracle")) return ClassifierType.ORACLE;
     String classifierType = PropertiesUtils.getString(props, CLASSIFIER_TYPE_PROP.replace("SIEVENAME", sievename), null);
     return ClassifierType.valueOf(classifierType);

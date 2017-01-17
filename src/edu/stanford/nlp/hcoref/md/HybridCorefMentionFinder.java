@@ -172,6 +172,7 @@ public class HybridCorefMentionFinder extends CorefMentionFinder {
       int beginIdx = ((CoreLabel)mLeaves.get(0).label()).get(CoreAnnotations.IndexAnnotation.class)-1;
       int endIdx = ((CoreLabel)mLeaves.get(mLeaves.size()-1).label()).get(CoreAnnotations.IndexAnnotation.class);
       if (",".equals(sent.get(endIdx-1).word())) { endIdx--; } // try not to have span that ends with ,
+      if (endIdx <= 0) continue;
       IntPair mSpan = new IntPair(beginIdx, endIdx);
 //      if(!mentionSpanSet.contains(mSpan) && (!insideNE(mSpan, namedEntitySpanSet)) ) {
       if(!mentionSpanSet.contains(mSpan) && (!insideNE(mSpan, namedEntitySpanSet) || t.value().startsWith("PRP")) ) {
